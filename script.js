@@ -1,4 +1,7 @@
+let NumDice = 1;
+
 document.querySelector("#add-die") .addEventListener("click", function(addDie) { 
+   if (NumDice < 5) {
     console.log("Die Added"); 
     const newSelect = document.createElement("select");
     const newOptionD4 = document.createElement("option");
@@ -26,8 +29,16 @@ document.querySelector("#add-die") .addEventListener("click", function(addDie) {
     newOptionD20.textContent = "D20";
     newSelect.appendChild(newOptionD20);
     document.querySelector("#select-container").appendChild(newSelect);
-    NumDice = NumDice + 1;});
+    NumDice = NumDice + 1;}
+});
 
 
 
-document.querySelector("#subtract-die") .addEventListener("click", function(subtractDie) { console.log("Die Subtracted"); });
+document.querySelector("#subtract-die") .addEventListener("click", function(subtractDie) { 
+   if (NumDice > 1) {
+    console.log("Die Subtracted");
+    const selectContainer = document.querySelector("#select-container");
+    selectContainer.removeChild(selectContainer.lastChild);
+    NumDice = NumDice - 1;
+   }
+});
