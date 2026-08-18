@@ -8,16 +8,20 @@
     </head>
     <body>
         <h1>TTRPG Dice Roller</h1>
-        <select>
-            <option value="D6"> D4</option>
+       <div id="select-container">
+         <select id ="die-dropdown"> ">
+            <option value="D4"> D4</option>
             <option value="D6"> D6</option>
             <option value="D8"> D8</option>
             <option value="D10"> D10</option>
             <option value="D12"> D12</option>
             <option value="D20"> D20</option>
         </select>
-        <div class="Button container"><button id="Add-Die">+</button>
-        <button id="Subtract-die"> - </button></div>
+       </div>
+        <div class="Button container">
+            <button id="subtract-die"> - </button>
+            <button id="add-die">+</button>
+        </div>
         <button id="roll-button">Roll Dice</button>
         <script src="script.js"></script>
     </body>    
