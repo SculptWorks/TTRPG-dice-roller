@@ -26,8 +26,7 @@ document.querySelector("#add-die") .addEventListener("click", function(addDie) {
     newOptionD20.textContent = "D20";
     newSelect.appendChild(newOptionD20);
     document.querySelector("#select-container").appendChild(newSelect);
-
-});
+    NumDice = NumDice + 1;});
 
 
 
