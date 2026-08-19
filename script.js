@@ -17,6 +17,8 @@ document.querySelector("#add-die") .addEventListener("click", function(addDie) {
     newDieImage.classList.add("die-image");
     newDieImage.src = "images/4-sides.png";
     newDieImage.alt = "image of a 4 sided die";
+    const newRollResult = document.createElement("p");
+    newRollResult.classList.add("die-result");
     const newSelect = document.createElement("select");
     const newOptionD4 = document.createElement("option");
     newOptionD4.value = 4;
@@ -42,6 +44,7 @@ document.querySelector("#add-die") .addEventListener("click", function(addDie) {
     newOptionD20.value = 20;
     newOptionD20.textContent = "D20";
     newSelect.appendChild(newOptionD20);
+    newDieContainer.appendChild(newRollResult);
     newDieContainer.appendChild(newDieImage);
     newDieContainer.appendChild(newSelect);
     document.querySelector("#select-container").appendChild(newDieContainer);
@@ -72,9 +75,15 @@ document.querySelector("#subtract-die") .addEventListener("click", function(subt
 
 document.querySelector("#roll-button") .addEventListener("click", function(rollDice) {
    document.querySelectorAll("#select-container select").forEach(function(select) {
+      select.parentElement.querySelector(".die-image").classList.add("roll");
       console.log("Selected die:", select.value);
       const dieValue = parseInt(select.value);
       const roll = Math.floor(Math.random() * dieValue) + 1;
       console.log("Roll result:", roll);
+      setTimeout(function() {
+         select.parentElement.querySelector(".die-image").classList.remove("roll");
+         select.parentElement.querySelector(".die-result").textContent = String(roll);
+      }, 500);
+      
    });
 });
