@@ -1,8 +1,22 @@
 let NumDice = 1;
 
+document.querySelector(".die-container select") .addEventListener("change", function() {
+   const selectedDie = this.value;
+   const dieImage = document.querySelector(".die-image");
+   dieImage.src = `images/${selectedDie}-sides.png`;
+   dieImage.alt = `image of a ${selectedDie}-sided die`;
+});
+
+
 document.querySelector("#add-die") .addEventListener("click", function(addDie) { 
-   if (NumDice < 5) {
+   if (NumDice < 10) {
     console.log("Die Added"); 
+    const newDieContainer = document.createElement("div");
+    newDieContainer.classList.add("die-container");
+    const newDieImage = document.createElement("img");
+    newDieImage.classList.add("die-image");
+    newDieImage.src = "images/4-sides.png";
+    newDieImage.alt = "image of a 4 sided die";
     const newSelect = document.createElement("select");
     const newOptionD4 = document.createElement("option");
     newOptionD4.value = 4;
@@ -28,9 +42,21 @@ document.querySelector("#add-die") .addEventListener("click", function(addDie) {
     newOptionD20.value = 20;
     newOptionD20.textContent = "D20";
     newSelect.appendChild(newOptionD20);
-    document.querySelector("#select-container").appendChild(newSelect);
-    NumDice = NumDice + 1;}
+    newDieContainer.appendChild(newDieImage);
+    newDieContainer.appendChild(newSelect);
+    document.querySelector("#select-container").appendChild(newDieContainer);
+
+    newSelect.addEventListener("change", function() {
+    const selectedDie = this.value;
+    newDieImage.src = `images/${selectedDie}-sides.png`;
+    newDieImage.alt = `image of a ${selectedDie}-sided die`; 
 });
+    NumDice = NumDice + 1;}
+
+
+});
+   
+
 
 
 
